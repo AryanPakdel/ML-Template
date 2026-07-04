@@ -3,7 +3,20 @@
     "allow": [
       "Bash(mamba env *)",
       "Bash(echo \"ENV_CREATE_EXIT=$?\")",
-      "Bash(cat)"
+      "Bash(cat)",
+      "Bash(ls /home/aryan/Desktop/ai-engineer-roadmap/Template/src/ml_pipeline/data/ /home/aryan/Desktop/ai-engineer-roadmap/Template/scripts/ 2>&1; echo ---; ls /home/aryan/Desktop/ai-engineer-roadmap/ml-journey/data/raw/ 2>&1)",
+      "Read(//home/aryan/Desktop/ai-engineer-roadmap/ml-journey/data/raw/**)",
+      "Bash(python3 -m py_compile src/ml_pipeline/data/__init__.py src/ml_pipeline/data/loaders.py src/ml_pipeline/data/validation.py src/ml_pipeline/data/splitters.py scripts/download_data.py)",
+      "Bash(python3 -m py_compile /home/aryan/Desktop/ai-engineer-roadmap/Template/src/ml_pipeline/features/__init__.py /home/aryan/Desktop/ai-engineer-roadmap/Template/src/ml_pipeline/features/transformers.py /home/aryan/Desktop/ai-engineer-roadmap/Template/src/ml_pipeline/features/builder.py)",
+      "Bash(python3 -m py_compile src/ml_pipeline/models/classical/__init__.py src/ml_pipeline/models/classical/linear.py src/ml_pipeline/models/classical/tree.py src/ml_pipeline/models/classical/random_forest.py src/ml_pipeline/models/classical/xgboost_model.py src/ml_pipeline/models/classical/lightgbm_model.py src/ml_pipeline/models/classical/catboost_model.py src/ml_pipeline/models/classical/svm.py src/ml_pipeline/models/classical/knn.py src/ml_pipeline/models/classical/naive_bayes.py)",
+      "Bash(python3 -m py_compile src/ml_pipeline/evaluation/__init__.py src/ml_pipeline/evaluation/metrics.py src/ml_pipeline/evaluation/plots.py src/ml_pipeline/evaluation/error_analysis.py)",
+      "Bash(mamba run -n ml-template python -c ' *)",
+      "Bash(python3 -m py_compile src/ml_pipeline/models/deep/__init__.py src/ml_pipeline/models/deep/tabular_data.py src/ml_pipeline/models/deep/mlp.py src/ml_pipeline/models/deep/stubs.py)",
+      "Bash(python3 -m py_compile src/ml_pipeline/preprocessing/__init__.py src/ml_pipeline/preprocessing/transformers.py src/ml_pipeline/preprocessing/components.py src/ml_pipeline/preprocessing/builder.py)",
+      "Bash(python3 -m py_compile src/ml_pipeline/eda/__init__.py src/ml_pipeline/eda/base.py src/ml_pipeline/eda/report.py src/ml_pipeline/eda/analyzers/__init__.py src/ml_pipeline/eda/analyzers/missing.py src/ml_pipeline/eda/analyzers/distributions.py src/ml_pipeline/eda/analyzers/categoricals.py src/ml_pipeline/eda/analyzers/correlation.py src/ml_pipeline/eda/analyzers/class_balance.py src/ml_pipeline/eda/analyzers/outliers.py src/ml_pipeline/eda/analyzers/cardinality.py src/ml_pipeline/eda/analyzers/leakage.py)",
+      "Bash(mamba run *)",
+      "Bash(git add *)",
+      "Bash(git commit -q -m 'feat: pipeline stages — data, preprocessing, eda, features, models, training, tuning, evaluation, tracking, cli *)"
     ]
   }
 }
