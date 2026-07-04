@@ -11,7 +11,7 @@ from typing import TYPE_CHECKING, Any, ClassVar
 import numpy as np
 
 from ml_pipeline.core.types import ExplainerHint, TaskType
-from ml_pipeline.models.base import ArrayLike, MODEL_REGISTRY
+from ml_pipeline.models.base import MODEL_REGISTRY, ArrayLike
 from ml_pipeline.models.sklearn_wrapper import SklearnModel
 
 if TYPE_CHECKING:

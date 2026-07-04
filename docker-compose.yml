@@ -1,0 +1,23 @@
+# Local orchestration for the ML pipeline template.
+# No 'version:' key — it is obsolete in Compose v2.
+services:
+  serving:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      # Trained bundles and demo data live outside the image; mount read-only.
+      - ./artifacts:/app/artifacts:ro
+      - ./data:/app/data:ro
+
+  # Optional: MLflow tracking UI for browsing local runs.
+  # Uncomment (and `docker compose up mlflow-ui`) to enable.
+  # mlflow-ui:
+  #   image: python:3.11-slim
+  #   command: >
+  #     sh -c "pip install --no-cache-dir mlflow &&
+  #            mlflow ui --backend-store-uri sqlite:////store/mlflow.db --host 0.0.0.0 --port 5000"
+  #   ports:
+  #     - "5000:5000"
+  #   volumes:
+  #     - ./mlflow.db:/store/mlflow.db

@@ -7,19 +7,19 @@ validated config objects, and persisted artifacts.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from enum import Enum
+from enum import StrEnum
 
 import pandas as pd
 
 
-class TaskType(str, Enum):
+class TaskType(StrEnum):
     """Supported supervised learning task types."""
 
     CLASSIFICATION = "classification"
     REGRESSION = "regression"
 
 
-class ExplainerHint(str, Enum):
+class ExplainerHint(StrEnum):
     """Which SHAP explainer family suits a model; ``NONE`` skips explainability."""
 
     TREE = "tree"
@@ -28,7 +28,7 @@ class ExplainerHint(str, Enum):
     NONE = "none"
 
 
-class ColumnRole(str, Enum):
+class ColumnRole(StrEnum):
     """How a raw column participates in the pipeline.
 
     - ``FEATURE``: used as a model input.

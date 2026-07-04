@@ -37,6 +37,8 @@ def init_tracking(cfg: MlflowConfig, experiment_name: str) -> bool:
     try:
         uri = cfg.tracking_uri
         if uri.startswith("file:") and not uri.startswith("file:///"):
+            # Legacy filesystem store: resolve relative paths. MLflow >=3 also
+            # requires MLFLOW_ALLOW_FILE_STORE=true for this backend.
             uri = "file://" + str(Path(uri.removeprefix("file:")).resolve())
         mlflow.set_tracking_uri(uri)
         mlflow.set_experiment(experiment_name)

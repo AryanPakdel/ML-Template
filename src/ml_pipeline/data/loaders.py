@@ -18,7 +18,7 @@ from ml_pipeline.core.registry import Registry
 
 logger = logging.getLogger(__name__)
 
-LOADER_REGISTRY: Registry[type["BaseLoader"]] = Registry("loader")
+LOADER_REGISTRY: Registry[type[BaseLoader]] = Registry("loader")
 
 
 class BaseLoader(ABC):

@@ -368,10 +368,15 @@ class CompareConfig(StrictModel):
 
 
 class MlflowConfig(StrictModel):
-    """MLflow tracking settings (local file store by default)."""
+    """MLflow tracking settings.
+
+    Defaults to a local SQLite store (MLflow >=3 deprecated the ``file:./mlruns``
+    filesystem backend). View runs with:
+    ``mlflow ui --backend-store-uri sqlite:///mlflow.db``.
+    """
 
     enabled: bool = True
-    tracking_uri: str = "file:./mlruns"
+    tracking_uri: str = "sqlite:///mlflow.db"
 
 
 class RunConfig(StrictModel):

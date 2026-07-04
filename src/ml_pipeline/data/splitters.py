@@ -19,7 +19,7 @@ from ml_pipeline.core.types import DatasetSplits
 
 logger = logging.getLogger(__name__)
 
-SPLITTER_REGISTRY: Registry[type["BaseSplitter"]] = Registry("splitter")
+SPLITTER_REGISTRY: Registry[type[BaseSplitter]] = Registry("splitter")
 
 
 class BaseSplitter(ABC):

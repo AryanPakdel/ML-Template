@@ -22,7 +22,7 @@ if TYPE_CHECKING:
 
 ArrayLike = np.ndarray | pd.DataFrame
 
-MODEL_REGISTRY: Registry[type["BaseModel"]] = Registry("model")
+MODEL_REGISTRY: Registry[type[BaseModel]] = Registry("model")
 
 
 class BaseModel(ABC):

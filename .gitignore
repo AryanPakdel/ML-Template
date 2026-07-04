@@ -39,3 +39,7 @@ venv/
 
 # claude local settings
 .claude/settings.local.json
+
+# mlflow local store
+mlflow.db
+mlartifacts/

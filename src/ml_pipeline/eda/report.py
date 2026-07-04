@@ -9,7 +9,7 @@ figures, table of contents) and ``report.md`` (findings-only summary).
 from __future__ import annotations
 
 import logging
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from html import escape
 from pathlib import Path
 
@@ -152,7 +152,7 @@ def run_eda(df: pd.DataFrame, cfg: PipelineConfig, output_dir: Path) -> Path:
             len(section.findings),
         )
 
-    generated = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+    generated = datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S UTC")
     output_dir = ensure_dir(Path(output_dir))
     html_path = output_dir / HTML_REPORT_NAME
     md_path = output_dir / MD_REPORT_NAME
