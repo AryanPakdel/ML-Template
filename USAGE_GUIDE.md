@@ -70,6 +70,37 @@ has code snippets):
 - **New EDA section** → subclass `EdaAnalyzer`
 - **Vision/NLP later** → fill in `models/deep/stubs.py` following the MLP pattern
 
+## Advanced corners (not covered elsewhere)
+
+**Custom tuning search space** — override or narrow any model's default space in YAML:
+
+```yaml
+tuning:
+  n_trials: 30
+  search_space:
+    max_depth:     { type: int, low: 3, high: 8 }
+    learning_rate: { type: float, low: 0.01, high: 0.2, log: true }
+    subsample:     { type: categorical, choices: [0.7, 0.85, 1.0] }
+```
+
+**Time-series data** — in your data config set `split: {strategy: time, time_column: <col>}`;
+the config validator then *requires* `training.cv: {strategy: timeseries, shuffle: false}`
+and forbids resampling (SMOTE). Rows are ordered by `time_column`, never shuffled.
+
+**Per-model params in leaderboards** — `compare.models` uses each model's built-in defaults,
+NOT `configs/model/*.yaml`; override per model with:
+
+```yaml
+compare:
+  models: [random_forest, xgboost, mlp]
+  model_params:
+    mlp: { max_epochs: 40, hidden_dims: [64, 32] }
+```
+
+**Where deeper answers live** — every config field: docstrings in
+`src/ml_pipeline/config/schema.py`; the model contract: `src/ml_pipeline/models/base.py`;
+the train/serve seam: `src/ml_pipeline/core/artifacts.py` (`PipelineBundle`).
+
 ## Stage 6 — Ship
 
 - `docker compose up` serves the latest bundle (mounts `artifacts/` read-only)
