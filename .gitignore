@@ -36,3 +36,6 @@ venv/
 
 # notebooks
 .ipynb_checkpoints/
+
+# claude local settings
+.claude/settings.local.json
