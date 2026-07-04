@@ -23,11 +23,27 @@ logger = logging.getLogger(__name__)
 _DTYPE_TO_PYTHON: dict[str, type] = {
     "int": int,
     "float": float,
-    "category": str,
     "string": str,
     "bool": bool,
     "datetime": str,
 }
+
+
+def _category_field_type(spec: dict[str, Any]) -> type:
+    """Request-model type for a ``category`` column, derived from its values.
+
+    Category columns keep whatever type the raw data holds (Titanic's ``Pclass``
+    is ``[1, 2, 3]``), so the field type follows ``allowed_values``: all-int ->
+    ``int``, numeric mix -> ``float``, anything else (or no declared values) ->
+    ``str``.
+    """
+    allowed = spec.get("allowed_values") or []
+    types = {type(v) for v in allowed if v is not None}
+    if types == {int}:
+        return int
+    if types and types <= {int, float}:
+        return float
+    return str
 
 
 def build_request_model(metadata: BundleMetadata) -> type[BaseModel]:
@@ -47,7 +63,11 @@ def build_request_model(metadata: BundleMetadata) -> type[BaseModel]:
     fields: dict[str, Any] = {}
     for spec in metadata.raw_feature_schema:
         name = str(spec["name"])
-        python_type = _DTYPE_TO_PYTHON.get(str(spec.get("dtype", "string")), str)
+        dtype = str(spec.get("dtype", "string"))
+        if dtype == "category":
+            python_type = _category_field_type(spec)
+        else:
+            python_type = _DTYPE_TO_PYTHON.get(dtype, str)
         if spec.get("nullable", False):
             fields[name] = (python_type | None, None)
         else:

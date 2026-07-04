@@ -1,31 +1,32 @@
 # pip mirror of environment.yml — used by Docker and CI.
+# Exact versions locked from the verified conda env (2026-07-04).
 # Torch: pull the CPU wheel instead of the multi-GB CUDA build.
 --extra-index-url https://download.pytorch.org/whl/cpu
 
-numpy>=1.26,<2.2
-pandas>=2.2,<2.4
-pyarrow>=15
-scikit-learn>=1.6,<1.8
-imbalanced-learn>=0.13,<0.15
-xgboost>=2.1,<3.1
-lightgbm>=4.5,<5
-catboost>=1.2.7
-torch>=2.5,<2.8
-lightning>=2.4,<2.6
-optuna>=4.0,<5
-mlflow>=2.22,<4
-shap>=0.46,<0.49
-pandera>=0.20,<0.25
-pydantic>=2.7,<3
-pyyaml>=6
-matplotlib>=3.8
-seaborn>=0.13
-plotly>=5.24
-fastapi>=0.111,<1
-uvicorn>=0.30
-pytest>=8
-pytest-cov
-httpx
-ruff
-joblib>=1.4
-lime>=0.2.0.1
+numpy==2.1.3
+pandas==2.3.3
+pyarrow==23.0.0
+scikit-learn==1.7.2
+imbalanced-learn==0.14.2
+xgboost==3.0.5
+lightgbm==4.6.0
+catboost==1.2.10
+torch==2.7.1
+lightning==2.5.6
+optuna==4.9.0
+mlflow==3.13.0
+shap==0.48.0
+pandera==0.24.0
+pydantic==2.13.4
+PyYAML==6.0.3
+matplotlib==3.11.0
+seaborn==0.13.2
+plotly==6.8.0
+fastapi==0.139.0
+uvicorn==0.50.0
+pytest==9.1.1
+pytest-cov==7.1.0
+httpx==0.28.1
+ruff==0.15.20
+joblib==1.5.3
+lime==0.2.0.1
