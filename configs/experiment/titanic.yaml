@@ -1,0 +1,35 @@
+# Full Titanic classification demo: train one model, or `mlpipe compare` for the leaderboard.
+run:
+  experiment_name: titanic
+  seed: 42
+data: titanic
+model: xgboost
+preprocessing:
+  _base_: default
+  column_overrides:
+    Cabin: { encoder: frequency }
+features: default
+training:
+  _base_: default
+  cv: { strategy: stratified }
+tuning: default
+evaluation: default
+serving: default
+compare:
+  models:
+    - logistic_regression
+    - decision_tree
+    - random_forest
+    - xgboost
+    - lightgbm
+    - catboost
+    - svm
+    - knn
+    - naive_bayes
+    - mlp
+  model_params:
+    mlp: { max_epochs: 40 }
+  ensemble:
+    voting: true
+    stacking: true
+    base_models: [random_forest, xgboost, lightgbm]

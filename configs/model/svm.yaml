@@ -1,0 +1,4 @@
+name: svm
+params:
+  C: 1.0
+  kernel: rbf

@@ -1,0 +1,4 @@
+name: stacking
+params:
+  base_models: [random_forest, xgboost, lightgbm]
+  n_folds: 5

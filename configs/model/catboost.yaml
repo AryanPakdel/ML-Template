@@ -1,0 +1,5 @@
+name: catboost
+params:
+  iterations: 300
+  learning_rate: 0.1
+  depth: 6

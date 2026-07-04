@@ -1,0 +1,13 @@
+numeric:
+  imputer: median
+  scaler: standard
+  outliers:
+    method: clip
+    iqr_factor: 3.0
+categorical:
+  imputer: most_frequent
+  encoder: onehot
+  max_onehot_cardinality: 15
+datetime:
+  extract: [year, month, day, weekday, is_weekend]
+column_overrides: {}

@@ -1,0 +1,28 @@
+# Fast end-to-end sanity config: 2-fold CV, tiny tuning budget, small MLP.
+run:
+  experiment_name: smoke_titanic
+  seed: 42
+data: titanic
+model: random_forest
+preprocessing:
+  _base_: default
+  column_overrides:
+    Cabin: { encoder: frequency }
+features: default
+training:
+  _base_: smoke
+  cv: { strategy: stratified }
+tuning: smoke
+evaluation:
+  _base_: default
+  explainability: { max_samples: 50 }
+  error_analysis_top_n: 10
+serving: default
+compare:
+  models: [logistic_regression, random_forest, xgboost, mlp]
+  model_params:
+    mlp: { max_epochs: 5, hidden_dims: [32], patience: 3 }
+  ensemble:
+    voting: true
+    stacking: true
+    base_models: [logistic_regression, random_forest, xgboost]

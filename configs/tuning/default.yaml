@@ -1,0 +1,6 @@
+n_trials: 15
+timeout_s: 900
+metric: auto
+direction: auto
+pruner: median
+search_space: {}

@@ -1,0 +1,23 @@
+# Fast regression sanity config.
+run:
+  experiment_name: smoke_california
+  seed: 42
+data: california_housing
+model: lightgbm
+preprocessing: default
+features: default
+training: smoke
+tuning: smoke
+evaluation:
+  _base_: default
+  explainability: { max_samples: 50 }
+  error_analysis_top_n: 10
+serving: default
+compare:
+  models: [linear_regression, random_forest, lightgbm, mlp]
+  model_params:
+    mlp: { max_epochs: 5, hidden_dims: [32], patience: 3 }
+  ensemble:
+    voting: true
+    stacking: false
+    base_models: [linear_regression, random_forest, lightgbm]

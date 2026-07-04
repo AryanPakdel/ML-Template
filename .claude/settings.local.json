@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mamba env *)",
+      "Bash(echo \"ENV_CREATE_EXIT=$?\")",
+      "Bash(cat)"
+    ]
+  }
+}

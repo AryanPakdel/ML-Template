@@ -1,0 +1,3 @@
+name: voting
+params:
+  base_models: [random_forest, xgboost, lightgbm]

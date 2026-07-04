@@ -1,0 +1,9 @@
+polynomial:
+  enabled: false
+correlation_pruning:
+  enabled: true
+  threshold: 0.95
+importance_selection:
+  enabled: false
+pca:
+  enabled: false

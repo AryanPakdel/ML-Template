@@ -1,0 +1,6 @@
+metrics: auto
+explainability:
+  method: auto
+  max_samples: 200
+  top_features: 10
+error_analysis_top_n: 20

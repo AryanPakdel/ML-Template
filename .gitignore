@@ -1,0 +1,38 @@
+# data & generated artifacts
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+artifacts/*
+!artifacts/.gitkeep
+mlruns/
+logs/*
+!logs/.gitkeep
+catboost_info/
+lightning_logs/
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+.mypy_cache/
+
+# environments
+.venv/
+venv/
+.env
+
+# editors / os
+.vscode/
+.idea/
+.DS_Store
+
+# notebooks
+.ipynb_checkpoints/

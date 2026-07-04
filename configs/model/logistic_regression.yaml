@@ -1,0 +1,4 @@
+name: logistic_regression
+params:
+  max_iter: 2000
+  C: 1.0

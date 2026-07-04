@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ml-pipeline-template"
+version = "0.1.0"
+description = "Reusable, config-driven end-to-end ML pipeline template (tabular classification/regression)."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Aryan" }]
+
+# Runtime dependencies are managed via environment.yml (conda) and
+# requirements.txt (pip/Docker). Kept unpinned here so `pip install -e .`
+# inside the conda env never fights the solver.
+dependencies = []
+
+[project.scripts]
+mlpipe = "ml_pipeline.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::FutureWarning",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = [
+    "E501", # long lines in configs/docstrings; line-length is advisory
+]

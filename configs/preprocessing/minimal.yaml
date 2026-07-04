@@ -1,0 +1,11 @@
+numeric:
+  imputer: median
+  scaler: none
+  outliers:
+    method: none
+categorical:
+  imputer: most_frequent
+  encoder: ordinal
+datetime:
+  extract: [year, month, weekday]
+column_overrides: {}

@@ -1,0 +1,4 @@
+cv:
+  strategy: kfold
+  n_splits: 2
+  shuffle: true

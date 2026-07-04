@@ -1,0 +1,20 @@
+# California Housing — regression demo (median house value in $100k).
+source:
+  type: csv
+  path: data/raw/california_housing.csv
+target: MedHouseVal
+task: regression
+split:
+  strategy: random
+  test_size: 0.15
+  val_size: 0.15
+columns:
+  - { name: MedInc, dtype: float, ge: 0 }
+  - { name: HouseAge, dtype: float, ge: 0 }
+  - { name: AveRooms, dtype: float, ge: 0 }
+  - { name: AveBedrms, dtype: float, ge: 0 }
+  - { name: Population, dtype: float, ge: 0 }
+  - { name: AveOccup, dtype: float, ge: 0 }
+  - { name: Latitude, dtype: float, ge: 32, le: 43 }
+  - { name: Longitude, dtype: float, ge: -125, le: -113 }
+  - { name: MedHouseVal, dtype: float, ge: 0 }

@@ -1,0 +1,28 @@
+# Full California Housing regression demo.
+run:
+  experiment_name: california_housing
+  seed: 42
+data: california_housing
+model: lightgbm
+preprocessing: default
+features: default
+training: default
+tuning: default
+evaluation: default
+serving: default
+compare:
+  models:
+    - linear_regression
+    - decision_tree
+    - random_forest
+    - xgboost
+    - lightgbm
+    - catboost
+    - knn
+    - mlp
+  model_params:
+    mlp: { max_epochs: 40 }
+  ensemble:
+    voting: true
+    stacking: true
+    base_models: [random_forest, xgboost, lightgbm]
